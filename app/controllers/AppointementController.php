@@ -16,7 +16,7 @@ class AppointementController extends Controller{
             $this->response();
         }
 
-        $res = $this->model->insert($aptmt->uid,$aptmt->scid,$aptmt->date);
+        $res = $this->model->insertAppointement($aptmt->uid,$aptmt->scid,$aptmt->date);
         
         if ($res) {
             $this->res['message'] = 'success';
