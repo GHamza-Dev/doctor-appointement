@@ -8,8 +8,7 @@ class AppointementController extends Controller{
 
     // Create Appointement
     public function create(){
-        $aptmt = $this->response();
-
+        $aptmt = $this->request();
         if(!isset($aptmt->uid) || !isset($aptmt->scid) || !isset($aptmt->date)){
             $this->res['err'] = true;
             $this->res['message'] = 'Failed';
