@@ -6,7 +6,8 @@ class AppointementController extends Controller{
         parent::__construct('Appointement');    
     }
 
-    public function createAppointement(){
+    // Create Appointement
+    public function create(){
         $aptmt = $this->response();
 
         if(!isset($aptmt->uid) || !isset($aptmt->scid) || !isset($aptmt->date)){
