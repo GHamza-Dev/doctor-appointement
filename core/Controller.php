@@ -45,10 +45,6 @@
     }
 
     public function response(){
-      header('Access-Control-Allow-Origin: *');
-      header("Content-Type: application/json; charset=UTF-8");
-      header("Access-Control-Allow-Methods: GET,POST");
-      header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods,Authorizaion');
       http_response_code($this->res['code']);
       echo json_encode($this->res);
       exit;
