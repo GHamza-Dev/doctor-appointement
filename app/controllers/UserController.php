@@ -40,6 +40,7 @@ class UserController extends Controller{
         if ($res) {
             $this->res['message'] = 'success';
             $this->res['alert'] = 'Registred successfully';
+            $this->res['uuid'] = $uniqid;
         }
         $this->response();
     }
