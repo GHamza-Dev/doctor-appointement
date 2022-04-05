@@ -7,10 +7,12 @@ function authi($method){
     $user = new UserController();
     $token = 0;
     
-    if (isset(apache_request_headers()['Authorization'])) {
+    if (isset(apache_request_headers()['authorization'])) {
+        $token = explode(' ',apache_request_headers()['authorization'])[1];
+    }else if (isset(apache_request_headers()['Authorization'])) {
         $token = explode(' ',apache_request_headers()['Authorization'])[1];
     }
-    
+
     if (!$user->valideToken($token) && !in_array($method,$allowedMethods)) {
         $res = [
             'code' => 401,
