@@ -15,5 +15,19 @@ class Appointement extends BaseModel{
         return $this->db->insert($this->table,$params);
     }
 
+    public function selectUserAppt($userId){
+        $t = $this->table;
+
+        $this->db->prepareQuery(
+            "SELECT * FROM user 
+            JOIN $t ON user.userId = $t.userId 
+            JOIN schedule ON $t.scheduleId  = schedule.scheduleId
+            WHERE $t.userId = ?
+        ");
+
+        $this->db->execute([$userId]);
+        return $this->db->getResult();
+    }
+
 
 }

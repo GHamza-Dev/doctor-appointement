@@ -25,4 +25,20 @@ class AppointementController extends Controller{
 
         $this->response();
     }
+
+    // Get user appointements 
+    public function getUserAppts(){
+        $user = $this->request();
+        if(!isset($user->uid)){
+            $this->res['err'] = true;
+            $this->res['message'] = 'Failed';
+            $this->res['alert'] = 'Uncompatible number of fields';
+            $this->response();
+        }
+
+        $res = $this->model->selectUserAppt($user->uid);
+        $this->res['data'] = $res;
+        $this->res['message'] = 'success';
+        $this->response();
+    }
 }
