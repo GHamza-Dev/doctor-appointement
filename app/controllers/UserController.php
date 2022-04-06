@@ -51,7 +51,7 @@ class UserController extends Controller{
 
     public function updateToken($id){
         $newToken = $this->generateToken();
-        $experation = time() + 60;
+        $experation = time() + 120000;
         return $this->model->updateToken($id,$newToken,$experation);
     }
 
@@ -67,6 +67,7 @@ class UserController extends Controller{
             $this->res['alert'] = 'Uncompatible number of fields';
             $this->response();
         }
+        $this->updateToken($user->id);
         $this->res['data'] = $this->model->getUser($user->id);
         $this->response();
     }
