@@ -51,7 +51,7 @@ class UserController extends Controller{
 
     public function updateToken($id){
         $newToken = $this->generateToken();
-        $experation = time() + 120000;
+        $experation = time() + 60*4;
         return $this->model->updateToken($id,$newToken,$experation);
     }
 
