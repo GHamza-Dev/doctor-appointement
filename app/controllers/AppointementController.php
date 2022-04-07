@@ -41,4 +41,27 @@ class AppointementController extends Controller{
         $this->res['message'] = 'success';
         $this->response();
     }
+
+    // Cancel appointement
+    public function cancel(){
+        $appt = $this->request();
+        
+        if(!isset($appt->id)){
+            $this->res['err'] = true;
+            $this->res['message'] = 'Failed';
+            $this->res['alert'] = 'Uncompatible number of fields';
+            $this->response();
+        }
+
+        if ($res = $this->model->delete($appt->id)) {
+            $this->res['data'] = $res;
+            $this->res['message'] = 'success';
+            $this->res['alert'] = 'Appointement canceled successfully';
+            $this->response();
+        }
+
+        $this->res['message'] = 'failed';
+        $this->res['alert'] = 'Ops something went wrong while canceling your booking!';
+        $this->response();
+    }
 }
